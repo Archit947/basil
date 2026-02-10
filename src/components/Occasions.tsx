@@ -2,13 +2,17 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
+import weddingImg from '../assets/occasions_wedding_1770629668029.png';
+import corporateImg from '../assets/occasions_corporate_1770629690979.png';
+import partyImg from '../assets/occasions_party_1770629710756.png';
+
 const occasions = [
     {
         id: 'weddings',
         label: 'Weddings',
         title: 'Fairytale Weddings',
         description: 'Create unforgettable memories with our bespoke wedding catering. From the Sangeet to the Reception, we handle every culinary detail with elegance.',
-        image: '/src/assets/occasions_wedding_1770629668029.png',
+        image: weddingImg,
         features: ['Customized Bride & Groom Menu', 'Live Counters', 'Premium Buffet Setup']
     },
     {
@@ -16,7 +20,7 @@ const occasions = [
         label: 'Corporate',
         title: 'Professional Corporate Events',
         description: 'Impress clients and boost team morale with our top-tier corporate catering services. Perfect for meetings, conferences, and annual parties.',
-        image: '/src/assets/occasions_corporate_1770629690979.png',
+        image: corporateImg,
         features: ['Boxed Lunches', 'Executive High Tea', 'Gala Dinner Buffets']
     },
     {
@@ -24,7 +28,7 @@ const occasions = [
         label: 'Social Parties',
         title: 'House & Social Parties',
         description: 'Host the perfect gathering without the stress of cooking. Our house party catering brings the restaurant experience to your living room.',
-        image: '/src/assets/occasions_party_1770629710756.png',
+        image: partyImg,
         features: ['Interactive Food Stations', 'Cocktail Snacks', 'Dessert Tables']
     }
 ];

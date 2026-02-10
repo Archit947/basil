@@ -3,6 +3,8 @@ import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
+import logo from '../assets/logo.webp';
+
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -55,7 +57,7 @@ const Navbar = () => {
                     {/* Logo */}
                     <Link to="/" className="flex items-center gap-2">
                         <img
-                            src="/src/assets/logo.webp"
+                            src={logo}
                             alt="BISIL Logo"
                             className="h-10 md:h-12 w-auto object-contain"
                         />

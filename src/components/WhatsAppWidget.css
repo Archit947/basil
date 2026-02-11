@@ -58,9 +58,20 @@
 }
 
 @keyframes wa-pulse {
-  0% { opacity: 0.7; transform: scale(0.95); }
-  70% { opacity: 0; transform: scale(1.15); }
-  100% { opacity: 0; transform: scale(1.25); }
+  0% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+
+  70% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
 }
 
 .wa-tooltip {
@@ -70,15 +81,32 @@
   border-radius: 10px;
   font-size: 0.85rem;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-  transform: translateY(6px);
+  margin-bottom: 8px;
+  /* Start hidden */
   opacity: 0;
-  transition: opacity 0.25s ease, transform 0.25s ease;
   pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.wa-widget:hover .wa-tooltip {
+.wa-tooltip--visible {
   opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
   transform: translateY(0);
+  animation: float-tooltip 3s ease-in-out infinite;
+}
+
+@keyframes float-tooltip {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 .wa-panel {
@@ -88,6 +116,13 @@
   backdrop-filter: blur(14px);
   border-radius: 20px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.28);
+
+  /* Position absolute to avoid affecting layout */
+  position: absolute;
+  bottom: 80px;
+  /* Above the button (66px + gap) */
+  right: 0;
+
   transform: translateY(20px);
   opacity: 0;
   pointer-events: none;

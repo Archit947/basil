@@ -1,5 +1,6 @@
-import { type FormEvent, useMemo, useState } from 'react';
-import { MessageCircle, Send, X } from 'lucide-react';
+import { type FormEvent, useEffect, useMemo, useState } from 'react';
+import { Send, X } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import './WhatsAppWidget.css';
 
 const INITIAL_FORM = {
@@ -10,7 +11,7 @@ const INITIAL_FORM = {
 
 // Update this constant if the business WhatsApp number changes.
 // Stored without symbols; include country code for reliability (e.g., +91 -> 91).
-const BUSINESS_PHONE = '917840959674';
+const BUSINESS_PHONE = '919970896765';
 
 // Optional: point to a PHP endpoint that generates the WhatsApp URL server-side.
 // Keep false to use pure frontend click-to-chat.
@@ -21,6 +22,20 @@ const WhatsAppWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [formValues, setFormValues] = useState(INITIAL_FORM);
   const [showError, setShowError] = useState(false);
+  const [isTooltipVisible, setIsTooltipVisible] = useState(true);
+
+  // Cycle tooltip visibility: 3s ON -> 5s OFF
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    if (isTooltipVisible) {
+      // If currently visible, hide after 3 seconds
+      timer = setTimeout(() => setIsTooltipVisible(false), 3000);
+    } else {
+      // If currently hidden, show after 5 seconds
+      timer = setTimeout(() => setIsTooltipVisible(true), 5000);
+    }
+    return () => clearTimeout(timer);
+  }, [isTooltipVisible]);
 
   const isMobileDevice = useMemo(() => {
     if (typeof navigator === 'undefined') {
@@ -97,7 +112,16 @@ const WhatsAppWidget = () => {
 
   return (
     <div className="wa-widget" aria-live="polite">
-      <div className="wa-tooltip">Chat with us on WhatsApp</div>
+      <div
+        className={`wa-tooltip ${!isOpen && isTooltipVisible ? 'wa-tooltip--visible' : ''}`}
+        onClick={togglePanel}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === 'Enter' && togglePanel()}
+      >
+        Chat with us on WhatsApp
+      </div>
+
       <div className={`wa-panel ${isOpen ? 'wa-panel--open' : ''}`} aria-hidden={!isOpen}>
         <div className="wa-panel__header">
           <div>
@@ -161,7 +185,7 @@ const WhatsAppWidget = () => {
         aria-expanded={isOpen}
         onClick={togglePanel}
       >
-        <MessageCircle size={30} />
+        <FaWhatsapp size={40} />
       </button>
     </div>
   );

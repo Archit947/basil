@@ -7,6 +7,7 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import GalleryPage from './pages/GalleryPage';
 import ServicesPage from './pages/ServicesPage';
+import WhatsAppWidget from './components/WhatsAppWidget';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           </Routes>
         </div>
         <Footer />
+        <WhatsAppWidget />
       </div>
     </Router>
   );

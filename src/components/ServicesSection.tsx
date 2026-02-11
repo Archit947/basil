@@ -3,32 +3,38 @@
 import { motion } from 'framer-motion';
 import { UtensilsCrossed, Briefcase, PartyPopper, Wine, ChefHat, CalendarHeart, Users } from 'lucide-react';
 import StarBorder from './StarBorder';
-import './StarBorder.css'; // Ensure CSS is loaded
+import './StarBorder.css';
+
+// Import images
+import weddingImg from '../assets/occasions_wedding_1770629668029.png';
+import corporateImg from '../assets/occasions_corporate_1770629690979.png';
+import partyImg from '../assets/occasions_party_1770629710756.png';
+import receptionImg from '../assets/2.jpg'; // Assuming this is suitable, otherwise fallback to Unsplash or placeholder
 
 const services = [
     {
         icon: <CalendarHeart size={32} />,
         title: "Wedding Catering",
         description: "Exquisite menus for your special day, ranging from traditional to contemporary cuisines.",
-        image: "https://images.unsplash.com/photo-1519225447839-a400a5399949?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        image: weddingImg
     },
     {
         icon: <Briefcase size={32} />,
         title: "Corporate Catering",
         description: "Professional catering for business lunches, conferences, and office parties.",
-        image: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        image: corporateImg
     },
     {
         icon: <PartyPopper size={32} />,
         title: "Birthday & House Parties",
         description: "Make your private gatherings memorable with our delicious and hygienic food.",
-        image: "https://images.unsplash.com/photo-1530103862676-de3c9da59af7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        image: partyImg
     },
     {
         icon: <Wine size={32} />,
-        title: "Cocktail & Reception",
-        description: "Elegant finger foods and live counters perfect for cocktail hours and receptions.",
-        image: "https://images.unsplash.com/photo-1514362545857-3bc16549766b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        title: "Reception",
+        description: "Elegant finger foods and live counters perfect for receptions.",
+        image: receptionImg
     },
     {
         icon: <ChefHat size={32} />,

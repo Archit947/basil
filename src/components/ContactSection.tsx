@@ -1,7 +1,39 @@
 
+import { useRef, useState } from 'react';
 import { Phone, Mail, MapPin, Instagram, Facebook, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
+    const form = useRef<HTMLFormElement>(null);
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
+
+    const sendEmail = (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        setStatus({ type: null, message: '' });
+
+        if (!form.current) return;
+
+
+        const SERVICE_ID = 'service_uwpt9nv';
+        const TEMPLATE_ID = 'template_vmaanuz';
+        const PUBLIC_KEY = 'gaENH_tf5JaMXddEW';
+
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+            .then((result) => {
+                console.log(result.text);
+                setStatus({ type: 'success', message: 'Message sent successfully! We will get back to you soon.' });
+                form.current?.reset();
+            }, (error) => {
+                console.log(error.text);
+                setStatus({ type: 'error', message: 'Failed to send message. Please try again later.' });
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    };
+
     return (
         <section id="contact" className="bg-gray-900 text-white py-20">
             <div className="container mx-auto px-4 md:px-6">
@@ -61,36 +93,42 @@ const ContactSection = () => {
                     <div className="w-full lg:w-1/2">
                         <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-xl">
                             <h3 className="text-2xl font-bold text-gray-900 mb-6 font-serif">Send an Inquiry</h3>
-                            <form className="space-y-4">
+                            <form ref={form} onSubmit={sendEmail} className="space-y-4">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
-                                        <input type="text" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900" placeholder="John Doe" />
+                                        <input type="text" name="user_name" required className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900" placeholder="John Doe" />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                        <input type="tel" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900" placeholder="+91 90000 00000" />
+                                        <input type="tel" name="user_phone" required className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900" placeholder="+91 90000 00000" />
                                     </div>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Event Date</label>
-                                        <input type="date" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900" />
+                                        <input type="date" name="event_date" required className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900" />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Guest Count</label>
-                                        <input type="number" className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900" placeholder="e.g. 500" />
+                                        <input type="number" name="guest_count" required className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900" placeholder="e.g. 500" />
                                     </div>
                                 </div>
 
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                                    <textarea rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900" placeholder="Tell us about your event requirements..."></textarea>
+                                    <textarea name="message" required rows={4} className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-gray-900" placeholder="Tell us about your event requirements..."></textarea>
                                 </div>
 
-                                <button type="submit" className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-black rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
-                                    Get Quantity Quote
+                                {status.message && (
+                                    <div className={`p-3 rounded-lg text-sm ${status.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                                        {status.message}
+                                    </div>
+                                )}
+
+                                <button type="submit" disabled={loading} className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-black rounded-lg font-bold text-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                                    {loading ? 'Sending...' : 'Get Quantity Quote'}
                                     <Send size={20} />
                                 </button>
                                 <p className="text-xs text-gray-500 text-center mt-3">We typically reply within 2 hours.</p>

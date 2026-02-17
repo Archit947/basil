@@ -1,10 +1,11 @@
 
 import { motion } from 'framer-motion';
+import paneerTikka from '../assets/PaneerTikka.jpg';
 
 const menuCategories = [
     {
         title: 'Starters',
-        image: 'src/assets/PaneerTikka.jpg',
+        image: paneerTikka,
         items: ['Paneer Tikka', 'Chicken Reshmi Kebab', 'Corn Cheese Balls', 'Fish Amritsari']
     },
     {

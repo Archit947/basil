@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const menuCategories = [
     {
         title: 'Starters',
-        image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+        image: '/src/assets/Paneer Tikka.jpg',
         items: ['Paneer Tikka', 'Chicken Reshmi Kebab', 'Corn Cheese Balls', 'Fish Amritsari']
     },
     {

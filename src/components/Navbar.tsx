@@ -3,7 +3,7 @@ import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
-import logo from '../assets/logo.webp';
+import logo from '../assets/logo.jpeg';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -58,7 +58,7 @@ const Navbar = () => {
                     <Link to="/" className="flex items-center gap-2">
                         <img
                             src={logo}
-                            alt="BISIL Logo"
+                            alt="Basil Logo"
                             className="h-10 md:h-12 w-auto object-contain"
                         />
                     </Link>

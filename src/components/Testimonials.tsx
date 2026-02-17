@@ -6,7 +6,7 @@ const testimonials = [
     {
         name: "Aditi S.",
         role: "Wedding Client",
-        text: "Bisil Catering made our wedding reception absolutely magical. The food was the talk of the night, and the service was impeccable. Highly recommended!",
+        text: "Basil Catering made our wedding reception absolutely magical. The food was the talk of the night, and the service was impeccable. Highly recommended!",
         rating: 5
     },
     {

@@ -47,7 +47,7 @@ const WhyChooseUs = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             className="text-primary-600 font-semibold tracking-wider text-sm uppercase block mb-2"
                         >
-                            Why Choose Bisil
+                            Why Choose Basil
                         </motion.span>
                         <motion.h2
                             initial={{ opacity: 0, x: -20 }}
@@ -104,7 +104,7 @@ const WhyChooseUs = () => {
                                     B
                                 </div>
                                 <div>
-                                    <p className="text-white font-bold">Bisil Catering</p>
+                                    <p className="text-white font-bold">Basil Catering</p>
                                     <p className="text-gold-400 text-sm">Pune's Finest</p>
                                 </div>
                             </div>

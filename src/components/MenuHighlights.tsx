@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const menuCategories = [
     {
         title: 'Starters',
-        image: '/src/assets/Paneer Tikka.jpg',
+        image: 'C:\Users\ARCHIT\OneDrive\Desktop\test\basil\src\assets\Paneer Tikka.jpg',
         items: ['Paneer Tikka', 'Chicken Reshmi Kebab', 'Corn Cheese Balls', 'Fish Amritsari']
     },
     {

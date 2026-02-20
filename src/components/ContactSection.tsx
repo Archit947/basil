@@ -64,7 +64,7 @@ const ContactSection = () => {
                                 </div>
                                 <div>
                                     <h4 className="text-lg font-bold">Email Us</h4>
-                                    <p className="text-gray-400">hello@bisil@gmail.com</p>
+                                    <a href="mailto:info@basilhospitality.com" className="text-gray-400 hover:text-gold-500 transition-colors">info@basilhospitality.com</a>
                                 </div>
                             </div>
 

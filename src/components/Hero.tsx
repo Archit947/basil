@@ -54,7 +54,7 @@ const Hero = () => {
                         className="flex flex-col sm:flex-row gap-4"
                     >
                         <a
-                            href="#contact"
+                            href="https://qsr.catalystsolutions.eco/fooddash/home"
                             className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-medium transition-all transform hover:scale-105 shadow-lg shadow-primary-900/20 flex items-center justify-center gap-2 group"
                         >
                             Book Catering

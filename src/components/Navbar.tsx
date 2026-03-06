@@ -76,7 +76,7 @@ const Navbar = () => {
                             </Link>
                         ))}
                         <Link
-                            to="/contact"
+                            to="https://qsr.catalystsolutions.eco/fooddash/home"
                             className="bg-[#e00a3d] hover:bg-[#bc042f] text-white px-6 py-2.5 rounded-full font-medium transition-all transform hover:scale-105 shadow-lg flex items-center gap-2"
                         >
                             <Phone size={18} />
